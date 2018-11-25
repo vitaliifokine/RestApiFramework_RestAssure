@@ -72,8 +72,6 @@ public class RestApiTests {
         RequestSpecification httpRequest = RestAssured.given();
         Response response = httpRequest.get("/v1/laureate.json");
         response.print();
-
-
     }
 
     @Feature("REST API - NOBEL PRIZE LAUREAT")
@@ -87,7 +85,9 @@ public class RestApiTests {
         List<String> lastNamesOfAllLaureates = jsonPathEvaluator.getList("laureates.surname");
         List<String> died = jsonPathEvaluator.getList("laureates.diedCountry");
         for (int ind=1; ind<firstNamesOfAllLaureates.size(); ind++){
-            if (died.get(ind)=="Germany") {
+            if (died.get(ind) == null) {
+
+            }else if(died.get(ind).trim().equals("Germany")){
                 System.out.println(firstNamesOfAllLaureates.get(ind) + " " + lastNamesOfAllLaureates.get(ind) + " " + died.get(ind));
             }
         }
