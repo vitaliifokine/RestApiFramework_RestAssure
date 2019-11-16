@@ -23,7 +23,7 @@ public class RestApiTests {
         Response response = httpRequest.get("/v1/laureate.json");
         String responseBody = response.getBody().asString();
         assertThat(response.getBody().asString(),
-                containsString("Paul Hermann"));
+                containsString("Wilhelm Conrad"));
     }
 
     @Feature("REST API - CITIES FROM COUNTRIES")
